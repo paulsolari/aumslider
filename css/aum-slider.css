@@ -1,0 +1,224 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  vertical-align: top;
+}
+
+button {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.aum-slider {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.aum-slider.initialized .aum-slide {
+  display: inline-block;
+}
+
+.aum-slider.lazy .aum-slide::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-color: #000 transparent #000 transparent;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s, visibility 0.5s;
+  -webkit-animation: rotate 1s linear infinite;
+          animation: rotate 1s linear infinite;
+}
+
+.aum-slider.lazy .aum-slide.loaded::after {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.aum-slider.lazy .aum-slide.loaded img {
+  opacity: 1;
+}
+
+.aum-slider.lazy .aum-slide img {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.aum-list {
+  position: relative;
+  overflow: hidden;
+}
+
+.aum-track {
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.aum-slide {
+  position: relative;
+  display: none;
+  vertical-align: top;
+  width: 100%;
+  min-height: 1px;
+  font-size: initial;
+  white-space: normal;
+}
+
+.aum-slide:first-child {
+  display: inline-block;
+}
+
+.aum-slide img {
+  width: 100%;
+}
+
+.aum-arrows {
+  display: flex;
+  justify-content: center;
+}
+
+.aum-arrow {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 10px;
+  width: 60px;
+  height: 60px;
+  font-size: 0;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #000;
+  border-radius: 100%;
+}
+
+.aum-arrow::before {
+  font: 30px/1 arial, sans-serif;
+  vertical-align: top;
+}
+
+.aum-arrow.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.aum-prev {
+  left: 0;
+}
+
+.aum-prev::before {
+  content: "\003C";
+}
+
+.aum-next {
+  right: 0;
+}
+
+.aum-next::before {
+  content: "\003E";
+}
+
+.aum-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.aum-dot {
+  width: 15px;
+  height: 15px;
+  margin: 0 3px;
+  font-size: 0;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #000;
+  border-radius: 100%;
+}
+
+.aum-dot.aum-current {
+  background: rgba(0, 0, 0, 0.7);
+}

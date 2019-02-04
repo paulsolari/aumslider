@@ -1,0 +1,157 @@
+@import "base/reset.scss";
+
+.aum-slider {
+	max-width: 1000px;
+	margin: 0 auto;
+
+	&.initialized {
+		.aum-slide {
+			display: inline-block;
+		}
+	}
+
+	&.lazy {
+		.aum-slide {
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin: -25px 0 0 -25px;
+				display: block;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				border: 2px solid #fff;
+				border-color: #000 transparent #000 transparent;
+				opacity: 1;
+				visibility: visible;
+				transition: opacity 0.5s, visibility 0.5s;
+				animation: rotate 1s linear infinite;
+			}
+
+			&.loaded {
+				&::after {
+					opacity: 0;
+					visibility: hidden;
+				}
+
+				img {
+					opacity: 1;
+				}
+			}
+
+			img {
+				opacity: 0;
+				transition: opacity 0.5s;
+			}
+		}
+
+		@keyframes rotate {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	}
+}
+
+.aum-list {
+	position: relative;
+	overflow: hidden;
+}
+
+.aum-track {
+	font-size: 0;
+	white-space: nowrap;
+}
+
+.aum-slide {
+	position: relative;
+	display: none;
+	vertical-align: top;
+	width: 100%;
+	min-height: 1px;
+	font-size: initial;
+	white-space: normal;
+
+	&:first-child {
+		display: inline-block;
+	}
+
+	img {
+		width: 100%;
+	}
+}
+
+.aum-arrows {
+	display: flex;
+	justify-content: center;
+}
+
+.aum-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 10px;
+	width: 60px;
+	height: 60px;
+	font-size: 0;
+	background: transparentize(#fff, 0.3);
+	border: 1px solid #000;
+	border-radius: 100%;
+
+	&::before {
+		font: 30px/1 arial, sans-serif;
+		vertical-align: top;
+	}
+
+	&.disabled {
+		opacity: 0.5;
+		cursor: default;
+	}
+}
+
+.aum-prev {
+	left: 0;
+
+	&::before {
+		content: "\003C";
+	}
+}
+
+.aum-next {
+	right: 0;
+
+	&::before {
+		content: "\003E";
+	}
+}
+
+.aum-dots {
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	justify-content: center;
+}
+
+.aum-dot {
+	width: 15px;
+	height: 15px;
+	margin: 0 3px;
+	font-size: 0;
+	background: transparentize(#fff, 0.3);
+	border: 1px solid #000;
+	border-radius: 100%;
+
+	&.aum-current {
+		background: transparentize(#000, 0.3);
+	}
+}
