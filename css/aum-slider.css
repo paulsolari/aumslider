@@ -124,12 +124,24 @@ button {
   }
 }
 
+.aum-slider.fade .aum-slide {
+  position: absolute;
+}
+
+.aum-slider.fade .aum-slide.aum-current {
+  position: relative;
+  z-index: 1;
+}
+
 .aum-list {
   position: relative;
   overflow: hidden;
 }
 
 .aum-track {
+  position: relative;
+  z-index: 0;
+  display: flex;
   font-size: 0;
   white-space: nowrap;
 }
@@ -137,6 +149,7 @@ button {
 .aum-slide {
   position: relative;
   display: none;
+  flex-shrink: 0;
   vertical-align: top;
   width: 100%;
   min-height: 1px;
