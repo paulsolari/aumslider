@@ -10,8 +10,9 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  box-sizing: border-box;
+time, mark, audio, video, input, select {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
@@ -60,11 +61,11 @@ button {
   cursor: pointer;
 }
 
-.aum-slider {
-  max-width: 1000px;
-  margin: 0 auto;
+input, select {
+  outline: none;
 }
 
+/*______AUMSLIDER______*/
 .aum-slider.initialized .aum-slide {
   display: inline-block;
 }
@@ -83,6 +84,8 @@ button {
   border-color: #000 transparent #000 transparent;
   opacity: 1;
   visibility: visible;
+  -webkit-transition: opacity 0.5s, visibility 0.5s;
+  -o-transition: opacity 0.5s, visibility 0.5s;
   transition: opacity 0.5s, visibility 0.5s;
   -webkit-animation: rotate 1s linear infinite;
           animation: rotate 1s linear infinite;
@@ -99,6 +102,8 @@ button {
 
 .aum-slider.lazy .aum-slide img {
   opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
@@ -125,7 +130,12 @@ button {
 }
 
 .aum-slider.fade .aum-slide {
+  background: #fff;
+}
+
+.aum-slider.fade .aum-slide:not(.aum-current) {
   position: absolute;
+  height: 100%;
 }
 
 .aum-slider.fade .aum-slide.aum-current {
@@ -141,6 +151,8 @@ button {
 .aum-track {
   position: relative;
   z-index: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 0;
   white-space: nowrap;
@@ -149,7 +161,8 @@ button {
 .aum-slide {
   position: relative;
   display: none;
-  flex-shrink: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   vertical-align: top;
   width: 100%;
   min-height: 1px;
@@ -166,14 +179,19 @@ button {
 }
 
 .aum-arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .aum-arrow {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   display: inline-block;
   vertical-align: top;
@@ -217,9 +235,14 @@ button {
   bottom: 15px;
   left: 50%;
   -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
           transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .aum-dot {

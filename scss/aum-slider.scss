@@ -1,9 +1,8 @@
 @import "base/reset.scss";
 
-.aum-slider {
-	max-width: 1000px;
-	margin: 0 auto;
+/*______AUMSLIDER______*/
 
+.aum-slider {
 	&.initialized {
 		.aum-slide {
 			display: inline-block;
@@ -60,7 +59,12 @@
 
 	&.fade {
 		.aum-slide {
-			position: absolute;
+			background: #fff;
+
+			&:not(.aum-current) {
+				position: absolute;
+				height: 100%;
+			}
 
 			&.aum-current {
 				position: relative;

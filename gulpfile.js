@@ -37,9 +37,8 @@ gulp.task("css", () => {
 	return gulp.src("./scss/*.scss")
 	.pipe(plumber({errorHandler: onError}))
 	.pipe(sass({outputStyle: "expanded"}))
-	.pipe(autoprefixer())
+	.pipe(autoprefixer({browsers: ['last 5 versions']}))
 	.pipe(gulp.dest("./css"))
-
 });
 
 
