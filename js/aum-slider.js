@@ -107,6 +107,7 @@
 		_.track = _.slider.querySelector(".aum-track");
 		_.originalSlides = _.slider.querySelectorAll(".aum-slide");
 		_.slides = _.cloneSlides() || _.originalSlides;
+		_.slides = Array.prototype.slice.call(_.slides);
 	};
 
 
