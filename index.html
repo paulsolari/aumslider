@@ -259,7 +259,7 @@
 							</div>
 							<div class="option">
 								<div class="label">Initial Slide</div>
-								<input type="number" id="initial-slide" value="0" min="0">
+								<input type="number" id="initial-slide" value="0" min="0" max="">
 							</div>
 							<div class="option">
 								<div class="label">Swipe</div>
@@ -331,7 +331,7 @@
 					</div>
 				</div>
 				<div class="slider-wrapper">
-					<div class="slider aum-slider">
+					<div class="slider">
 						<div><img src="images/image-1.jpg" alt="image-1"></div>
 						<div><img src="images/image-2.jpg" alt="image-2"></div>
 						<div><img src="images/image-3.jpg" alt="image-3"></div>
@@ -344,19 +344,35 @@
 			document.addEventListener("DOMContentLoaded", function() {
 				var slider = new AumSlider(".slider");
 
+				document.querySelector("#initial-slide").max = document.querySelectorAll(".slider .aum-slide").length - 1;
+
 				document.querySelector("#options-form").addEventListener("change", function(event) {
-					slider.options.speed = +document.querySelector("#speed").value;
-					slider.options.easing = document.querySelector("#easing").value;
-					slider.options.initialSlide = +document.querySelector("#initial-slide").value;
-					slider.options.swipe = document.querySelector("#swipe").checked;
-					slider.options.arrows = document.querySelector("#arrows").checked;
-					slider.options.arrowsWrapper = document.querySelector("#arrows-wrapper").checked;
-					slider.options.dots = document.querySelector("#dots").checked;
-					slider.options.loop = document.querySelector("#loop").checked;
-					slider.options.autoplay = document.querySelector("#autoplay").checked;
-					slider.options.autoplaySpeed = +document.querySelector("#autoplay-speed").value;
-					slider.options.lazyLoad = document.querySelector("#lazy-load").checked;
-					slider.options.fadeEffect = document.querySelector("#fade-effect").checked;
+					var speed = +document.querySelector("#speed").value;
+					var easing = document.querySelector("#easing").value;
+					var initialSlide = +document.querySelector("#initial-slide").value;
+					var swipe = document.querySelector("#swipe").checked;
+					var arrows = document.querySelector("#arrows").checked;
+					var arrowsWrapper = document.querySelector("#arrows-wrapper").checked;
+					var dots = document.querySelector("#dots").checked;
+					var loop = document.querySelector("#loop").checked;
+					var autoplay = document.querySelector("#autoplay").checked;
+					var autoplaySpeed = +document.querySelector("#autoplay-speed").value;
+					var lazyLoad = document.querySelector("#lazy-load").checked;
+					var fadeEffect = document.querySelector("#fade-effect").checked;
+
+					slider.options.speed = speed;
+					slider.options.easing = easing;
+					slider.options.initialSlide = initialSlide;
+					slider.options.swipe = swipe;
+					slider.options.arrows = arrows;
+					slider.options.arrowsWrapper = arrowsWrapper;
+					slider.options.dots = dots;
+					slider.options.loop = loop;
+					slider.options.autoplay = autoplay;
+					slider.options.autoplaySpeed = autoplaySpeed;
+					slider.options.lazyLoad = lazyLoad;
+					slider.options.fadeEffect = fadeEffect;
+
 					slider.reinit();
 				});
 
